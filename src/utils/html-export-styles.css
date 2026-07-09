@@ -1,0 +1,42 @@
+* { box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif; margin: 0; padding: 24px; background: #0f172a; color: #f1f5f9; }
+h1 { margin: 0 0 8px; font-size: 24px; }
+.meta { color: #94a3b8; margin-bottom: 20px; font-size: 14px; }
+.nav { position: sticky; top: 0; z-index: 10; background: #0f172a; padding: 16px 0 12px; margin-bottom: 20px; border-bottom: 1px solid #334155; }
+.nav-label { font-size: 12px; color: #64748b; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+.map-tabs, .tactic-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.map-tab, .tactic-tab { padding: 8px 14px; border: 1px solid #334155; border-radius: 8px; background: #1e293b; color: #cbd5e1; font-size: 13px; font-weight: 600; cursor: pointer; }
+.map-tab:hover, .tactic-tab:hover { border-color: #3b82f6; }
+.map-tab.active { background: #3b82f6; border-color: #3b82f6; color: #fff; }
+.tactic-tab.active { background: #f59e0b; border-color: #f59e0b; color: #0f172a; }
+.tactic-tab.hidden { display: none; }
+.tactic-panel { display: none; }
+.tactic-panel.active { display: block; }
+.tactic-title { font-size: 22px; color: #fbbf24; margin: 0 0 20px; }
+table { width: 100%; border-collapse: collapse; background: #1e293b; border-radius: 12px; overflow: hidden; margin-bottom: 24px; }
+th, td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #334155; }
+th { background: #0f172a; font-size: 13px; color: #94a3b8; }
+.badge { display: inline-block; padding: 2px 10px; border-radius: 999px; color: #fff; font-size: 12px; font-weight: 600; }
+h2 { font-size: 16px; color: #fbbf24; margin: 24px 0 12px; }
+.gantt-scroll-hint { display: none; font-size: 12px; color: #64748b; margin: -16px 0 16px; }
+.gantt-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 8px; border-radius: 12px; }
+.gantt-grid { display: grid; grid-template-columns: 92px repeat(5, 80px); min-width: 492px; gap: 1px; background: #334155; border-radius: 12px; overflow: hidden; }
+.gantt-cell { background: #1e293b; padding: 10px 8px; font-size: 12px; min-height: 48px; position: relative; }
+.gantt-header { background: #0f172a; font-weight: 700; color: #94a3b8; text-align: center; }
+.gantt-member { font-weight: 600; line-height: 1.35; }
+.gantt-timeline-cell { grid-column: span 5; position: relative; min-height: 52px; }
+.gantt-bar { position: absolute; top: 6px; bottom: 6px; border-radius: 6px; color: #fff; font-size: 10px; font-weight: 600; display: flex; align-items: flex-start; padding: 4px 6px; overflow: hidden; }
+.gantt-bar-text { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; line-height: 1.25; width: 100%; word-break: keep-all; overflow-wrap: break-word; }
+.loadout-tag { display: block; font-size: 10px; color: #fbbf24; margin-top: 4px; font-weight: 500; }
+
+@media (max-width: 640px) {
+  body { padding: 12px; }
+  h1 { font-size: 20px; }
+  .meta { font-size: 13px; }
+  .gantt-scroll-hint { display: block; }
+  .gantt-grid { grid-template-columns: 80px repeat(5, 76px); min-width: 460px; }
+  .gantt-cell { padding: 8px 6px; font-size: 11px; }
+  .gantt-member { font-size: 11px; }
+  .gantt-bar { font-size: 9px; padding: 3px 4px; }
+  th, td { padding: 10px 12px; font-size: 13px; }
+}

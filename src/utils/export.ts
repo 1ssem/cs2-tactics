@@ -3,6 +3,7 @@ import { jsPDF } from 'jspdf'
 import { SLOTS, Tactic, WorkspaceData } from '../types'
 import { formatLoadoutText } from '../components/MemberLoadoutInline'
 import { formatSlotRange } from './timeline'
+import htmlExportStyles from './html-export-styles.css?raw'
 
 export async function exportAsPng(element: HTMLElement, filename: string): Promise<void> {
   const canvas = await html2canvas(element, {
@@ -68,32 +69,7 @@ export function exportAsHtml(tactics: Tactic[]): void {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${escapeHtml(title)}</title>
   <style>
-    * { box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; padding: 24px; background: #0f172a; color: #f1f5f9; }
-    h1 { margin: 0 0 8px; font-size: 24px; }
-    .meta { color: #94a3b8; margin-bottom: 20px; font-size: 14px; }
-    .nav { position: sticky; top: 0; z-index: 10; background: #0f172a; padding: 16px 0 12px; margin-bottom: 20px; border-bottom: 1px solid #334155; }
-    .nav-label { font-size: 12px; color: #64748b; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
-    .map-tabs, .tactic-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
-    .map-tab, .tactic-tab { padding: 8px 14px; border: 1px solid #334155; border-radius: 8px; background: #1e293b; color: #cbd5e1; font-size: 13px; font-weight: 600; cursor: pointer; }
-    .map-tab:hover, .tactic-tab:hover { border-color: #3b82f6; }
-    .map-tab.active { background: #3b82f6; border-color: #3b82f6; color: #fff; }
-    .tactic-tab.active { background: #f59e0b; border-color: #f59e0b; color: #0f172a; }
-    .tactic-tab.hidden { display: none; }
-    .tactic-panel { display: none; }
-    .tactic-panel.active { display: block; }
-    .tactic-title { font-size: 22px; color: #fbbf24; margin: 0 0 20px; }
-    table { width: 100%; border-collapse: collapse; background: #1e293b; border-radius: 12px; overflow: hidden; margin-bottom: 24px; }
-    th, td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #334155; }
-    th { background: #0f172a; font-size: 13px; color: #94a3b8; }
-    .badge { display: inline-block; padding: 2px 10px; border-radius: 999px; color: #fff; font-size: 12px; font-weight: 600; }
-    h2 { font-size: 16px; color: #fbbf24; margin: 24px 0 12px; }
-    .gantt-grid { display: grid; grid-template-columns: 140px repeat(5, 1fr); gap: 1px; background: #334155; border-radius: 12px; overflow: hidden; margin-bottom: 24px; }
-    .gantt-cell { background: #1e293b; padding: 10px 8px; font-size: 12px; min-height: 44px; position: relative; }
-    .gantt-header { background: #0f172a; font-weight: 700; color: #94a3b8; text-align: center; }
-    .gantt-member { font-weight: 600; }
-    .gantt-bar { position: absolute; top: 8px; bottom: 8px; border-radius: 6px; color: #fff; font-size: 11px; font-weight: 600; display: flex; align-items: center; padding: 0 8px; overflow: hidden; line-height: 1.3; word-break: break-all; }
-    .loadout-tag { font-size: 10px; color: #fbbf24; margin-left: 4px; }
+    ${htmlExportStyles}
   </style>
 </head>
 <body>
@@ -187,12 +163,12 @@ function renderTacticPanel(tactic: Tactic, active: boolean): string {
         .map((a) => {
           const left = ((a.startSlot - 1) / 5) * 100
           const width = ((a.endSlot - a.startSlot + 1) / 5) * 100
-          return `<div class="gantt-bar" style="background:${m.color};left:calc(${left}% + 4px);width:calc(${width}% - 8px)" title="${escapeAttr(a.desc || a.title)}">${escapeHtml(a.title)}</div>`
+          return `<div class="gantt-bar" style="background:${m.color};left:calc(${left}% + 4px);width:calc(${width}% - 8px)" title="${escapeAttr(a.desc || a.title)}"><span class="gantt-bar-text">${escapeHtml(a.title)}</span></div>`
         })
         .join('')
 
       return `<div class="gantt-cell gantt-member">${escapeHtml(m.name)}${loadoutText ? `<span class="loadout-tag">${escapeHtml(loadoutText)}</span>` : ''}</div>
-        <div class="gantt-cell" style="grid-column: span 5; position:relative; min-height:44px;">${bars}</div>`
+        <div class="gantt-cell gantt-timeline-cell">${bars}</div>`
     })
     .join('')
 
@@ -200,10 +176,13 @@ function renderTacticPanel(tactic: Tactic, active: boolean): string {
     <h2 class="tactic-title">${escapeHtml(tactic.map)} · ${escapeHtml(tactic.projectName)}</h2>
 
     <h2>時間軸</h2>
-    <div class="gantt-grid">
-      <div class="gantt-cell gantt-header">隊友</div>
-      ${ganttHeader}
-      ${ganttRows}
+    <p class="gantt-scroll-hint">← 左右滑動查看完整時間軸 →</p>
+    <div class="gantt-scroll">
+      <div class="gantt-grid">
+        <div class="gantt-cell gantt-header">隊友</div>
+        ${ganttHeader}
+        ${ganttRows}
+      </div>
     </div>
 
     <h2>戰術動作明細</h2>
