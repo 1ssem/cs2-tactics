@@ -164,7 +164,7 @@
     },
     {
       "id": "1783509314270-xu047",
-      "projectName": "戰術 2",
+      "projectName": "Testing",
       "map": "Dust II",
       "members": [
         {
@@ -512,6 +512,6 @@
       }
     }
   ],
-  "activeTacticId": "1783565602236-r2gbu",
-  "publishedAt": "2026-07-09T03:13:53.504Z"
+  "activeTacticId": "1783509314270-xu047",
+  "publishedAt": "2026-07-09T03:32:56.599Z"
 }
