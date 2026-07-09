@@ -2,7 +2,7 @@ import html2canvas from 'html2canvas'
 import { jsPDF } from 'jspdf'
 import { SLOTS, Tactic, WorkspaceData } from '../types'
 import { formatLoadoutText } from '../components/MemberLoadoutInline'
-import { formatSlotRange } from './timeline'
+import { formatSlotRange, sortActionsByMemberAndTime } from './timeline'
 import htmlExportStyles from './html-export-styles.css?raw'
 
 export async function exportAsPng(element: HTMLElement, filename: string): Promise<void> {
@@ -140,7 +140,7 @@ export function exportAsHtml(tactics: Tactic[]): void {
 function renderTacticPanel(tactic: Tactic, active: boolean): string {
   const memberMap = Object.fromEntries(tactic.members.map((m) => [m.id, m]))
 
-  const actionRows = tactic.actions
+  const actionRows = sortActionsByMemberAndTime(tactic.actions, tactic.members)
     .map((a) => {
       const m = memberMap[a.memberId]
       return `<tr>

@@ -38,10 +38,20 @@ function formatLoadoutText(loadout) {
   return parts.length > 0 ? parts.join(' ') : '—'
 }
 
+function sortActionsByMemberAndTime(actions, members) {
+  const memberOrder = Object.fromEntries(members.map((m, i) => [m.id, i]))
+  return [...actions].sort((a, b) => {
+    const memberDiff = (memberOrder[a.memberId] ?? 999) - (memberOrder[b.memberId] ?? 999)
+    if (memberDiff !== 0) return memberDiff
+    if (a.startSlot !== b.startSlot) return a.startSlot - b.startSlot
+    return a.endSlot - b.endSlot
+  })
+}
+
 function renderTacticPanel(tactic, active) {
   const memberMap = Object.fromEntries(tactic.members.map((m) => [m.id, m]))
 
-  const actionRows = tactic.actions
+  const actionRows = sortActionsByMemberAndTime(tactic.actions, tactic.members)
     .map((a) => {
       const m = memberMap[a.memberId]
       return `<tr>
