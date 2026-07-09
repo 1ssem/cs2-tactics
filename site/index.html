@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CS2 戰術手冊</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; padding: 24px; background: #0f172a; color: #f1f5f9; }
+    h1 { margin: 0 0 8px; font-size: 24px; }
+    .meta { color: #94a3b8; margin-bottom: 20px; font-size: 14px; }
+    .nav { position: sticky; top: 0; z-index: 10; background: #0f172a; padding: 16px 0 12px; margin-bottom: 20px; border-bottom: 1px solid #334155; }
+    .nav-label { font-size: 12px; color: #64748b; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .map-tabs, .tactic-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .map-tab, .tactic-tab { padding: 8px 14px; border: 1px solid #334155; border-radius: 8px; background: #1e293b; color: #cbd5e1; font-size: 13px; font-weight: 600; cursor: pointer; }
+    .map-tab:hover, .tactic-tab:hover { border-color: #3b82f6; }
+    .map-tab.active { background: #3b82f6; border-color: #3b82f6; color: #fff; }
+    .tactic-tab.active { background: #f59e0b; border-color: #f59e0b; color: #0f172a; }
+    .tactic-tab.hidden { display: none; }
+    .tactic-panel { display: none; }
+    .tactic-panel.active { display: block; }
+    .tactic-title { font-size: 22px; color: #fbbf24; margin: 0 0 20px; }
+    table { width: 100%; border-collapse: collapse; background: #1e293b; border-radius: 12px; overflow: hidden; margin-bottom: 24px; }
+    th, td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #334155; }
+    th { background: #0f172a; font-size: 13px; color: #94a3b8; }
+    .badge { display: inline-block; padding: 2px 10px; border-radius: 999px; color: #fff; font-size: 12px; font-weight: 600; }
+    h2 { font-size: 16px; color: #fbbf24; margin: 24px 0 12px; }
+    .gantt-grid { display: grid; grid-template-columns: 140px repeat(5, 1fr); gap: 1px; background: #334155; border-radius: 12px; overflow: hidden; margin-bottom: 24px; }
+    .gantt-cell { background: #1e293b; padding: 10px 8px; font-size: 12px; min-height: 44px; position: relative; }
+    .gantt-header { background: #0f172a; font-weight: 700; color: #94a3b8; text-align: center; }
+    .gantt-member { font-weight: 600; }
+    .gantt-bar { position: absolute; top: 8px; bottom: 8px; border-radius: 6px; color: #fff; font-size: 11px; font-weight: 600; display: flex; align-items: center; padding: 0 8px; overflow: hidden; line-height: 1.3; word-break: break-all; }
+    .loadout-tag { font-size: 10px; color: #fbbf24; margin-left: 4px; }
+  </style>
+</head>
+<body>
+  <h1>CS2 戰術手冊</h1>
+  <p class="meta">更新時間：2026/7/9 上午11:13:53 · 共 5 個戰術 · 4 張地圖</p>
+
+  <div class="nav">
+    <div class="nav-label">地圖</div>
+    <div class="map-tabs" id="mapTabs"><button type="button" class="map-tab active" data-map="Ancient">Ancient</button><button type="button" class="map-tab" data-map="Dust II">Dust II</button><button type="button" class="map-tab" data-map="Inferno">Inferno</button><button type="button" class="map-tab" data-map="Mirage">Mirage</button></div>
+    <div class="nav-label">戰術</div>
+    <div class="tactic-tabs" id="tacticTabs"><button type="button" class="tactic-tab active" data-map="Ancient" data-tactic-id="1783507965899-j5ml0">B rush</button><button type="button" class="tactic-tab hidden" data-map="Dust II" data-tactic-id="1783509314270-xu047">戰術 2</button><button type="button" class="tactic-tab hidden" data-map="Inferno" data-tactic-id="1783509315386-mxflu">戰術 3</button><button type="button" class="tactic-tab hidden" data-map="Mirage" data-tactic-id="1783509316371-bjyjj">戰術 4</button><button type="button" class="tactic-tab" data-map="Ancient" data-tactic-id="1783565602236-r2gbu">Mid Rush</button></div>
+  </div>
+
+  <div id="panels"><section class="tactic-panel active" data-map="Ancient" data-tactic-id="1783507965899-j5ml0">
+    <h2 class="tactic-title">Ancient · B rush</h2>
+
+    <h2>時間軸</h2>
+    <div class="gantt-grid">
+      <div class="gantt-cell gantt-header">隊友</div>
+      <div class="gantt-cell gantt-header">第 1 格</div><div class="gantt-cell gantt-header">第 2 格</div><div class="gantt-cell gantt-header">第 3 格</div><div class="gantt-cell gantt-header">第 4 格</div><div class="gantt-cell gantt-header">第 5 格</div>
+      <div class="gantt-cell gantt-member">第一身位<span class="loadout-tag">火 煙</span></div>
+        <div class="gantt-cell" style="grid-column: span 5; position:relative; min-height:44px;"><div class="gantt-bar" style="background:#3b82f6;left:calc(20% + 4px);width:calc(20% - 8px)" title="燒b Ramp">燒b Ramp</div><div class="gantt-bar" style="background:#3b82f6;left:calc(40% + 4px);width:calc(20% - 8px)" title="滅火">滅火</div></div><div class="gantt-cell gantt-member">第二身位<span class="loadout-tag">火</span></div>
+        <div class="gantt-cell" style="grid-column: span 5; position:relative; min-height:44px;"><div class="gantt-bar" style="background:#10b981;left:calc(60% + 4px);width:calc(20% - 8px)" title="爆 B site">彈牆燒b site</div><div class="gantt-bar" style="background:#10b981;left:calc(20% + 4px);width:calc(20% - 8px)" title=" drop smoke b lobby"> drop smoke b lobby</div></div><div class="gantt-cell gantt-member">第三身位<span class="loadout-tag">煙 閃×2</span></div>
+        <div class="gantt-cell" style="grid-column: span 5; position:relative; min-height:44px;"><div class="gantt-bar" style="background:#f59e0b;left:calc(0% + 4px);width:calc(20% - 8px)" title="煙跳台黑屋">煙跳台黑屋</div><div class="gantt-bar" style="background:#f59e0b;left:calc(60% + 4px);width:calc(20% - 8px)" title="B門左邊 3點黑點中間果粒 , w + jump throw">B門左邊 柱後閃</div></div><div class="gantt-cell gantt-member">第四身位<span class="loadout-tag">煙 閃×2</span></div>
+        <div class="gantt-cell" style="grid-column: span 5; position:relative; min-height:44px;"><div class="gantt-bar" style="background:#ef4444;left:calc(0% + 4px);width:calc(20% - 8px)" title="比煙第5身位">比煙第5身位</div><div class="gantt-bar" style="background:#ef4444;left:calc(60% + 4px);width:calc(20% - 8px)" title="B門右邊Blong閃 瞄ramp中 ，w jump throw /底線閃 , 要叫行到ramp箱前面 w jump throw, 要叫">B門右邊Blong閃/底線閃</div></div><div class="gantt-cell gantt-member">第五身位<span class="loadout-tag">煙 閃×2</span></div>
+        <div class="gantt-cell" style="grid-column: span 5; position:relative; min-height:44px;"><div class="gantt-bar" style="background:#8b5cf6;left:calc(0% + 4px);width:calc(20% - 8px)" title="mid快煙+執地下smoke">mid快煙+執地下smoke</div><div class="gantt-bar" style="background:#8b5cf6;left:calc(20% + 4px);width:calc(20% - 8px)" title="跑到過左tunnel之後煙b site 黑屋">煙b site 黑屋</div><div class="gantt-bar" style="background:#8b5cf6;left:calc(40% + 4px);width:calc(20% - 8px)" title=" lobby 箱上閃, 瞄b字 jump throw 
+ramp 閃 瞄右邊樹頂">call,  lobby 箱上柱後閃, ramp閃</div><div class="gantt-bar" style="background:#8b5cf6;left:calc(60% + 4px);width:calc(20% - 8px)" title="底線煙, 瞄門頂附近 shift jump throw">底線ct煙</div></div>
+    </div>
+
+    <h2>戰術動作明細</h2>
+    <table>
+      <thead>
+        <tr><th>動作</th><th>描述</th><th>隊友</th><th>時間格</th></tr>
+      </thead>
+      <tbody><tr>
+        <td>燒b Ramp</td>
+        <td>燒b Ramp</td>
+        <td><span class="badge" style="background:#3b82f6">第一身位</span></td>
+        <td>第 2 格</td>
+      </tr>
+<tr>
+        <td>彈牆燒b site</td>
+        <td>爆 B site</td>
+        <td><span class="badge" style="background:#10b981">第二身位</span></td>
+        <td>第 4 格</td>
+      </tr>
+<tr>
+        <td>滅火</td>
+        <td>—</td>
+        <td><span class="badge" style="background:#3b82f6">第一身位</span></td>
+        <td>第 3 格</td>
+      </tr>
+<tr>
+        <td>煙跳台黑屋</td>
+        <td>煙跳台黑屋</td>
+        <td><span class="badge" style="background:#f59e0b">第三身位</span></td>
+        <td>第 1 格</td>
+      </tr>
+<tr>
+        <td>B門左邊 柱後閃</td>
+        <td>B門左邊 3點黑點中間果粒 , w + jump throw</td>
+        <td><span class="badge" style="background:#f59e0b">第三身位</span></td>
+        <td>第 4 格</td>
+      </tr>
+<tr>
+        <td>比煙第5身位</td>
+        <td>比煙第5身位</td>
+        <td><span class="badge" style="background:#ef4444">第四身位</span></td>
+        <td>第 1 格</td>
+      </tr>
+<tr>
+        <td>B門右邊Blong閃/底線閃</td>
+        <td>B門右邊Blong閃 瞄ramp中 ，w jump throw /底線閃 , 要叫行到ramp箱前面 w jump throw, 要叫</td>
+        <td><span class="badge" style="background:#ef4444">第四身位</span></td>
+        <td>第 4 格</td>
+      </tr>
+<tr>
+        <td>mid快煙+執地下smoke</td>
+        <td>mid快煙+執地下smoke</td>
+        <td><span class="badge" style="background:#8b5cf6">第五身位</span></td>
+        <td>第 1 格</td>
+      </tr>
+<tr>
+        <td>煙b site 黑屋</td>
+        <td>跑到過左tunnel之後煙b site 黑屋</td>
+        <td><span class="badge" style="background:#8b5cf6">第五身位</span></td>
+        <td>第 2 格</td>
+      </tr>
+<tr>
+        <td>call,  lobby 箱上柱後閃, ramp閃</td>
+        <td> lobby 箱上閃, 瞄b字 jump throw 
+ramp 閃 瞄右邊樹頂</td>
+        <td><span class="badge" style="background:#8b5cf6">第五身位</span></td>
+        <td>第 3 格</td>
+      </tr>
+<tr>
+        <td>底線ct煙</td>
+        <td>底線煙, 瞄門頂附近 shift jump throw</td>
+        <td><span class="badge" style="background:#8b5cf6">第五身位</span></td>
+        <td>第 4 格</td>
+      </tr>
+<tr>
+        <td> drop smoke b lobby</td>
+        <td>—</td>
+        <td><span class="badge" style="background:#10b981">第二身位</span></td>
+        <td>第 2 格</td>
+      </tr></tbody>
+    </table>
+  </section>
+<section class="tactic-panel" data-map="Dust II" data-tactic-id="1783509314270-xu047">
+    <h2 class="tactic-title">Dust II · 戰術 2</h2>
+
+    <h2>時間軸</h2>
+    <div class="gantt-grid">
+      <div class="gantt-cell gantt-header">隊友</div>
+      <div class="gantt-cell gantt-header">第 1 格</div><div class="gantt-cell gantt-header">第 2 格</div><div class="gantt-cell gantt-header">第 3 格</div><div class="gantt-cell gantt-header">第 4 格</div><div class="gantt-cell gantt-header">第 5 格</div>
+      <div class="gantt-cell gantt-member">第一身位<span class="loadout-tag">閃×2</span></div>
+        <div class="gantt-cell" style="grid-column: span 5; position:relative; min-height:44px;"></div><div class="gantt-cell gantt-member">第二身位<span class="loadout-tag">雷</span></div>
+        <div class="gantt-cell" style="grid-column: span 5; position:relative; min-height:44px;"></div><div class="gantt-cell gantt-member">第三身位<span class="loadout-tag">閃</span></div>
+        <div class="gantt-cell" style="grid-column: span 5; position:relative; min-height:44px;"></div><div class="gantt-cell gantt-member">第四身位<span class="loadout-tag">煙 閃</span></div>
+        <div class="gantt-cell" style="grid-column: span 5; position:relative; min-height:44px;"></div><div class="gantt-cell gantt-member">第五身位<span class="loadout-tag">火</span></div>
+        <div class="gantt-cell" style="grid-column: span 5; position:relative; min-height:44px;"></div>
+    </div>
+
+    <h2>戰術動作明細</h2>
+    <table>
+      <thead>
+        <tr><th>動作</th><th>描述</th><th>隊友</th><th>時間格</th></tr>
+      </thead>
+      <tbody><tr><td colspan="4">—</td></tr></tbody>
+    </table>
+  </section>
+<section class="tactic-panel" data-map="Inferno" data-tactic-id="1783509315386-mxflu">
+    <h2 class="tactic-title">Inferno · 戰術 3</h2>
+
+    <h2>時間軸</h2>
+    <div class="gantt-grid">
+      <div class="gantt-cell gantt-header">隊友</div>
+      <div class="gantt-cell gantt-header">第 1 格</div><div class="gantt-cell gantt-header">第 2 格</div><div class="gantt-cell gantt-header">第 3 格</div><div class="gantt-cell gantt-header">第 4 格</div><div class="gantt-cell gantt-header">第 5 格</div>
+      <div class="gantt-cell gantt-member">第一身位<span class="loadout-tag">閃×2</span></div>
+        <div class="gantt-cell" style="grid-column: span 5; position:relative; min-height:44px;"></div><div class="gantt-cell gantt-member">第二身位<span class="loadout-tag">雷</span></div>
+        <div class="gantt-cell" style="grid-column: span 5; position:relative; min-height:44px;"></div><div class="gantt-cell gantt-member">第三身位<span class="loadout-tag">閃</span></div>
+        <div class="gantt-cell" style="grid-column: span 5; position:relative; min-height:44px;"></div><div class="gantt-cell gantt-member">第四身位<span class="loadout-tag">煙 閃</span></div>
+        <div class="gantt-cell" style="grid-column: span 5; position:relative; min-height:44px;"></div><div class="gantt-cell gantt-member">第五身位<span class="loadout-tag">火</span></div>
+        <div class="gantt-cell" style="grid-column: span 5; position:relative; min-height:44px;"></div>
+    </div>
+
+    <h2>戰術動作明細</h2>
+    <table>
+      <thead>
+        <tr><th>動作</th><th>描述</th><th>隊友</th><th>時間格</th></tr>
+      </thead>
+      <tbody><tr><td colspan="4">—</td></tr></tbody>
+    </table>
+  </section>
+<section class="tactic-panel" data-map="Mirage" data-tactic-id="1783509316371-bjyjj">
+    <h2 class="tactic-title">Mirage · 戰術 4</h2>
+
+    <h2>時間軸</h2>
+    <div class="gantt-grid">
+      <div class="gantt-cell gantt-header">隊友</div>
+      <div class="gantt-cell gantt-header">第 1 格</div><div class="gantt-cell gantt-header">第 2 格</div><div class="gantt-cell gantt-header">第 3 格</div><div class="gantt-cell gantt-header">第 4 格</div><div class="gantt-cell gantt-header">第 5 格</div>
+      <div class="gantt-cell gantt-member">第一身位<span class="loadout-tag">閃×2</span></div>
+        <div class="gantt-cell" style="grid-column: span 5; position:relative; min-height:44px;"></div><div class="gantt-cell gantt-member">第二身位<span class="loadout-tag">雷</span></div>
+        <div class="gantt-cell" style="grid-column: span 5; position:relative; min-height:44px;"></div><div class="gantt-cell gantt-member">第三身位<span class="loadout-tag">閃</span></div>
+        <div class="gantt-cell" style="grid-column: span 5; position:relative; min-height:44px;"></div><div class="gantt-cell gantt-member">第四身位<span class="loadout-tag">煙 閃</span></div>
+        <div class="gantt-cell" style="grid-column: span 5; position:relative; min-height:44px;"></div><div class="gantt-cell gantt-member">第五身位<span class="loadout-tag">火</span></div>
+        <div class="gantt-cell" style="grid-column: span 5; position:relative; min-height:44px;"></div>
+    </div>
+
+    <h2>戰術動作明細</h2>
+    <table>
+      <thead>
+        <tr><th>動作</th><th>描述</th><th>隊友</th><th>時間格</th></tr>
+      </thead>
+      <tbody><tr><td colspan="4">—</td></tr></tbody>
+    </table>
+  </section>
+<section class="tactic-panel" data-map="Ancient" data-tactic-id="1783565602236-r2gbu">
+    <h2 class="tactic-title">Ancient · Mid Rush</h2>
+
+    <h2>時間軸</h2>
+    <div class="gantt-grid">
+      <div class="gantt-cell gantt-header">隊友</div>
+      <div class="gantt-cell gantt-header">第 1 格</div><div class="gantt-cell gantt-header">第 2 格</div><div class="gantt-cell gantt-header">第 3 格</div><div class="gantt-cell gantt-header">第 4 格</div><div class="gantt-cell gantt-header">第 5 格</div>
+      <div class="gantt-cell gantt-member">第一身位<span class="loadout-tag">雷</span></div>
+        <div class="gantt-cell" style="grid-column: span 5; position:relative; min-height:44px;"><div class="gantt-bar" style="background:#3b82f6;left:calc(20% + 4px);width:calc(20% - 8px)" title="nade mid，彈右邊牆">nade mid</div><div class="gantt-bar" style="background:#3b82f6;left:calc(60% + 4px);width:calc(20% - 8px)" title="entry 往左邊貼">entry 往左邊貼</div></div><div class="gantt-cell gantt-member">第二身位<span class="loadout-tag">火</span></div>
+        <div class="gantt-cell" style="grid-column: span 5; position:relative; min-height:44px;"><div class="gantt-bar" style="background:#10b981;left:calc(20% + 4px);width:calc(20% - 8px)" title="燒cubby, 出mid前條柱左邊瞄樹葉">燒cubby</div></div><div class="gantt-cell gantt-member">第三身位<span class="loadout-tag">雷 閃</span></div>
+        <div class="gantt-cell" style="grid-column: span 5; position:relative; min-height:44px;"><div class="gantt-bar" style="background:#f59e0b;left:calc(20% + 4px);width:calc(20% - 8px)" title="nade mid, spawn 準心望右邊chain">nade mid</div><div class="gantt-bar" style="background:#f59e0b;left:calc(0% + 4px);width:calc(20% - 8px)" title="drop smoke to spawn5">drop smoke to spawn5</div><div class="gantt-bar" style="background:#f59e0b;left:calc(60% + 4px);width:calc(20% - 8px)" title="entry 往右邊貼">entry 往右邊貼</div></div><div class="gantt-cell gantt-member">第四身位<span class="loadout-tag">煙 閃×2</span></div>
+        <div class="gantt-cell" style="grid-column: span 5; position:relative; min-height:44px;"><div class="gantt-bar" style="background:#ef4444;left:calc(0% + 4px);width:calc(20% - 8px)" title="smoke Red, 樹葉 w jump throw">smoke Red</div><div class="gantt-bar" style="background:#ef4444;left:calc(40% + 4px);width:calc(20% - 8px)" title="49, 47秒 左邊閃mid">flash mid ,49 ,47</div></div><div class="gantt-cell gantt-member">第五身位<span class="loadout-tag">煙 閃×2</span></div>
+        <div class="gantt-cell" style="grid-column: span 5; position:relative; min-height:44px;"><div class="gantt-bar" style="background:#8b5cf6;left:calc(0% + 4px);width:calc(20% - 8px)" title="Smoke 滅火煙，-3y望住樹葉上面">滅火煙</div><div class="gantt-bar" style="background:#8b5cf6;left:calc(20% + 4px);width:calc(20% - 8px)" title="smoke dount, 瞄左邊白牆頂附近 w jump throw">smoke dount</div><div class="gantt-bar" style="background:#8b5cf6;left:calc(40% + 4px);width:calc(20% - 8px)" title="mid flash at 48,46">flash mid 48,46</div></div>
+    </div>
+
+    <h2>戰術動作明細</h2>
+    <table>
+      <thead>
+        <tr><th>動作</th><th>描述</th><th>隊友</th><th>時間格</th></tr>
+      </thead>
+      <tbody><tr>
+        <td>nade mid</td>
+        <td>nade mid，彈右邊牆</td>
+        <td><span class="badge" style="background:#3b82f6">第一身位</span></td>
+        <td>第 2 格</td>
+      </tr>
+<tr>
+        <td>燒cubby</td>
+        <td>燒cubby, 出mid前條柱左邊瞄樹葉</td>
+        <td><span class="badge" style="background:#10b981">第二身位</span></td>
+        <td>第 2 格</td>
+      </tr>
+<tr>
+        <td>nade mid</td>
+        <td>nade mid, spawn 準心望右邊chain</td>
+        <td><span class="badge" style="background:#f59e0b">第三身位</span></td>
+        <td>第 2 格</td>
+      </tr>
+<tr>
+        <td>smoke Red</td>
+        <td>smoke Red, 樹葉 w jump throw</td>
+        <td><span class="badge" style="background:#ef4444">第四身位</span></td>
+        <td>第 1 格</td>
+      </tr>
+<tr>
+        <td>flash mid ,49 ,47</td>
+        <td>49, 47秒 左邊閃mid</td>
+        <td><span class="badge" style="background:#ef4444">第四身位</span></td>
+        <td>第 3 格</td>
+      </tr>
+<tr>
+        <td>滅火煙</td>
+        <td>Smoke 滅火煙，-3y望住樹葉上面</td>
+        <td><span class="badge" style="background:#8b5cf6">第五身位</span></td>
+        <td>第 1 格</td>
+      </tr>
+<tr>
+        <td>drop smoke to spawn5</td>
+        <td>drop smoke to spawn5</td>
+        <td><span class="badge" style="background:#f59e0b">第三身位</span></td>
+        <td>第 1 格</td>
+      </tr>
+<tr>
+        <td>smoke dount</td>
+        <td>smoke dount, 瞄左邊白牆頂附近 w jump throw</td>
+        <td><span class="badge" style="background:#8b5cf6">第五身位</span></td>
+        <td>第 2 格</td>
+      </tr>
+<tr>
+        <td>flash mid 48,46</td>
+        <td>mid flash at 48,46</td>
+        <td><span class="badge" style="background:#8b5cf6">第五身位</span></td>
+        <td>第 3 格</td>
+      </tr>
+<tr>
+        <td>entry 往左邊貼</td>
+        <td>entry 往左邊貼</td>
+        <td><span class="badge" style="background:#3b82f6">第一身位</span></td>
+        <td>第 4 格</td>
+      </tr>
+<tr>
+        <td>entry 往右邊貼</td>
+        <td>entry 往右邊貼</td>
+        <td><span class="badge" style="background:#f59e0b">第三身位</span></td>
+        <td>第 4 格</td>
+      </tr></tbody>
+    </table>
+  </section></div>
+
+  <script>
+    const tactics = [{"id":"1783507965899-j5ml0","map":"Ancient","name":"B rush"},{"id":"1783509314270-xu047","map":"Dust II","name":"戰術 2"},{"id":"1783509315386-mxflu","map":"Inferno","name":"戰術 3"},{"id":"1783509316371-bjyjj","map":"Mirage","name":"戰術 4"},{"id":"1783565602236-r2gbu","map":"Ancient","name":"Mid Rush"}];
+    let activeMap = "Ancient";
+
+    function selectMap(map) {
+      activeMap = map;
+      document.querySelectorAll('.map-tab').forEach((btn) => {
+        btn.classList.toggle('active', btn.dataset.map === map);
+      });
+      document.querySelectorAll('.tactic-tab').forEach((btn) => {
+        const show = btn.dataset.map === map;
+        btn.classList.toggle('hidden', !show);
+        btn.classList.remove('active');
+      });
+      const first = tactics.find((t) => t.map === map);
+      if (first) selectTactic(first.id);
+    }
+
+    function selectTactic(id) {
+      document.querySelectorAll('.tactic-panel').forEach((panel) => {
+        panel.classList.toggle('active', panel.dataset.tacticId === id);
+      });
+      document.querySelectorAll('.tactic-tab').forEach((btn) => {
+        if (!btn.classList.contains('hidden')) {
+          btn.classList.toggle('active', btn.dataset.tacticId === id);
+        }
+      });
+    }
+
+    document.getElementById('mapTabs').addEventListener('click', (e) => {
+      const btn = e.target.closest('.map-tab');
+      if (btn) selectMap(btn.dataset.map);
+    });
+
+    document.getElementById('tacticTabs').addEventListener('click', (e) => {
+      const btn = e.target.closest('.tactic-tab');
+      if (btn && !btn.classList.contains('hidden')) selectTactic(btn.dataset.tacticId);
+    });
+
+    if (tactics.length > 0) selectTactic(tactics[0].id);
+  </script>
+</body>
+</html>

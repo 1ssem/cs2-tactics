@@ -1,0 +1,156 @@
+.viewer-page {
+  min-height: 100vh;
+  background: #0f172a;
+  color: #f1f5f9;
+  padding: 24px;
+}
+
+.viewer-header {
+  margin-bottom: 20px;
+}
+
+.viewer-header h1 {
+  margin: 0 0 8px;
+  font-size: 24px;
+}
+
+.viewer-meta,
+.viewer-status {
+  color: #94a3b8;
+  font-size: 14px;
+  margin: 0;
+}
+
+.viewer-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #0f172a;
+  padding: 16px 0 12px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #334155;
+}
+
+.viewer-nav-group + .viewer-nav-group {
+  margin-top: 12px;
+}
+
+.viewer-nav-label {
+  display: block;
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.viewer-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.viewer-tab {
+  padding: 8px 14px;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  background: #1e293b;
+  color: #cbd5e1;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.viewer-tab:hover {
+  border-color: #3b82f6;
+}
+
+.viewer-tab.map-tab.active {
+  background: #3b82f6;
+  border-color: #3b82f6;
+  color: #fff;
+}
+
+.viewer-tab.tactic-tab.active {
+  background: #f59e0b;
+  border-color: #f59e0b;
+  color: #0f172a;
+}
+
+.viewer-tactic-title {
+  font-size: 22px;
+  color: #fbbf24;
+  margin: 0 0 20px;
+}
+
+.viewer-section-title {
+  font-size: 16px;
+  color: #fbbf24;
+  margin: 24px 0 12px;
+}
+
+.viewer-content .gantt-wrapper {
+  background: #1e293b;
+  border-radius: 12px;
+  border: 1px solid #334155;
+}
+
+.viewer-content .gantt-header h2 {
+  color: #f1f5f9;
+}
+
+.viewer-table-wrap {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid #334155;
+}
+
+.viewer-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #1e293b;
+}
+
+.viewer-table th,
+.viewer-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #334155;
+}
+
+.viewer-table th {
+  background: #0f172a;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.viewer-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.viewer-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding-top: 48px;
+}
+
+.viewer-upload {
+  display: inline-flex;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: #3b82f6;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.viewer-upload input {
+  display: none;
+}
