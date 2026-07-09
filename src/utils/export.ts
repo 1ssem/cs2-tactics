@@ -4,6 +4,7 @@ import { SLOTS, Tactic, WorkspaceData } from '../types'
 import { formatLoadoutText } from '../components/MemberLoadoutInline'
 import { formatSlotRange, sortActionsByMemberAndTime } from './timeline'
 import htmlExportStyles from './html-export-styles.css?raw'
+import exportMeta from '../../export-meta.json'
 
 export async function exportAsPng(element: HTMLElement, filename: string): Promise<void> {
   const canvas = await html2canvas(element, {
@@ -74,6 +75,7 @@ export function exportAsHtml(tactics: Tactic[]): void {
 </head>
 <body>
   <h1>${escapeHtml(title)}</h1>
+  <p class="team-desc">${escapeHtml(exportMeta.teamDescription)}</p>
   <p class="meta">匯出時間：${new Date().toLocaleString('zh-Hant')} · 共 ${tactics.length} 個戰術 · ${maps.length} 張地圖</p>
 
   <div class="nav">
@@ -211,6 +213,7 @@ export function exportAsJson(workspace: WorkspaceData): void {
 export function downloadPublishJson(workspace: WorkspaceData): void {
   const payload = {
     ...workspace,
+    teamDescription: exportMeta.teamDescription,
     publishedAt: new Date().toISOString(),
   }
   const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' })

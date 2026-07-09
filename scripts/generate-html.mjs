@@ -110,6 +110,7 @@ function renderTacticPanel(tactic, active) {
 export function generateHtmlFromTactics(tactics, options = {}) {
   const title = options.title ?? 'CS2 戰術手冊'
   const publishedAt = options.publishedAt
+  const teamDescription = options.teamDescription ?? ''
   const maps = [...new Set(tactics.map((t) => t.map))]
 
   const mapTabs = maps
@@ -153,6 +154,7 @@ export function generateHtmlFromTactics(tactics, options = {}) {
 </head>
 <body>
   <h1>${escapeHtml(title)}</h1>
+  ${teamDescription ? `<p class="team-desc">${escapeHtml(teamDescription)}</p>` : ''}
   <p class="meta">${metaLine}</p>
 
   <div class="nav">
@@ -209,6 +211,14 @@ export function generateHtmlFromTactics(tactics, options = {}) {
 </html>`
 }
 
+function loadExportMeta() {
+  try {
+    return JSON.parse(readFileSync(resolve(root, 'export-meta.json'), 'utf8'))
+  } catch {
+    return { teamDescription: '' }
+  }
+}
+
 function main() {
   const raw = JSON.parse(readFileSync(source, 'utf8'))
   const tactics = raw.tactics
@@ -217,7 +227,11 @@ function main() {
     process.exit(1)
   }
 
-  const html = generateHtmlFromTactics(tactics, { publishedAt: raw.publishedAt })
+  const exportMeta = loadExportMeta()
+  const html = generateHtmlFromTactics(tactics, {
+    publishedAt: raw.publishedAt,
+    teamDescription: raw.teamDescription || exportMeta.teamDescription || '',
+  })
   mkdirSync(outDir, { recursive: true })
   writeFileSync(outFile, html, 'utf8')
   console.log(`已生成 ${outFile}`)
