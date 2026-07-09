@@ -227,6 +227,7 @@ function escapeHtml(s: string): string {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
+    .replace(/[\r\n]+/g, ' ')
 }
 
 function escapeAttr(s: string): string {

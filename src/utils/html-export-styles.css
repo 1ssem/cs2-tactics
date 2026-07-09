@@ -20,12 +20,12 @@ th { background: #0f172a; font-size: 13px; color: #94a3b8; }
 h2 { font-size: 16px; color: #fbbf24; margin: 24px 0 12px; }
 .gantt-scroll-hint { display: none; font-size: 12px; color: #64748b; margin: -16px 0 16px; }
 .gantt-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 8px; border-radius: 12px; }
-.gantt-grid { display: grid; grid-template-columns: 92px repeat(5, 80px); min-width: 492px; gap: 1px; background: #334155; border-radius: 12px; overflow: hidden; }
+.gantt-grid { display: grid; grid-template-columns: minmax(120px, 160px) repeat(5, 1fr); width: 100%; gap: 1px; background: #334155; border-radius: 12px; overflow: hidden; }
 .gantt-cell { background: #1e293b; padding: 10px 8px; font-size: 12px; min-height: 48px; position: relative; }
 .gantt-header { background: #0f172a; font-weight: 700; color: #94a3b8; text-align: center; }
 .gantt-member { font-weight: 600; line-height: 1.35; }
 .gantt-timeline-cell { grid-column: span 5; position: relative; min-height: 52px; }
-.gantt-bar { position: absolute; top: 6px; bottom: 6px; border-radius: 6px; color: #fff; font-size: 10px; font-weight: 600; display: flex; align-items: flex-start; padding: 4px 6px; overflow: hidden; }
+.gantt-bar { position: absolute; top: 6px; bottom: 6px; border-radius: 6px; color: #fff; font-size: 11px; font-weight: 600; display: flex; align-items: flex-start; padding: 4px 6px; overflow: hidden; }
 .gantt-bar-text { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; line-height: 1.25; width: 100%; word-break: keep-all; overflow-wrap: break-word; }
 .loadout-tag { display: block; font-size: 10px; color: #fbbf24; margin-top: 4px; font-weight: 500; }
 
@@ -34,7 +34,7 @@ h2 { font-size: 16px; color: #fbbf24; margin: 24px 0 12px; }
   h1 { font-size: 20px; }
   .meta { font-size: 13px; }
   .gantt-scroll-hint { display: block; }
-  .gantt-grid { grid-template-columns: 80px repeat(5, 76px); min-width: 460px; }
+  .gantt-grid { grid-template-columns: 80px repeat(5, 76px); width: max-content; min-width: 460px; }
   .gantt-cell { padding: 8px 6px; font-size: 11px; }
   .gantt-member { font-size: 11px; }
   .gantt-bar { font-size: 9px; padding: 3px 4px; }

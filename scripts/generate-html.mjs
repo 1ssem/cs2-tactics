@@ -22,6 +22,7 @@ function escapeHtml(s) {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
+    .replace(/[\r\n]+/g, ' ')
 }
 
 function formatSlotRange(start, end) {

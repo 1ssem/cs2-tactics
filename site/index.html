@@ -27,12 +27,12 @@ th { background: #0f172a; font-size: 13px; color: #94a3b8; }
 h2 { font-size: 16px; color: #fbbf24; margin: 24px 0 12px; }
 .gantt-scroll-hint { display: none; font-size: 12px; color: #64748b; margin: -16px 0 16px; }
 .gantt-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 8px; border-radius: 12px; }
-.gantt-grid { display: grid; grid-template-columns: 92px repeat(5, 80px); min-width: 492px; gap: 1px; background: #334155; border-radius: 12px; overflow: hidden; }
+.gantt-grid { display: grid; grid-template-columns: minmax(120px, 160px) repeat(5, 1fr); width: 100%; gap: 1px; background: #334155; border-radius: 12px; overflow: hidden; }
 .gantt-cell { background: #1e293b; padding: 10px 8px; font-size: 12px; min-height: 48px; position: relative; }
 .gantt-header { background: #0f172a; font-weight: 700; color: #94a3b8; text-align: center; }
 .gantt-member { font-weight: 600; line-height: 1.35; }
 .gantt-timeline-cell { grid-column: span 5; position: relative; min-height: 52px; }
-.gantt-bar { position: absolute; top: 6px; bottom: 6px; border-radius: 6px; color: #fff; font-size: 10px; font-weight: 600; display: flex; align-items: flex-start; padding: 4px 6px; overflow: hidden; }
+.gantt-bar { position: absolute; top: 6px; bottom: 6px; border-radius: 6px; color: #fff; font-size: 11px; font-weight: 600; display: flex; align-items: flex-start; padding: 4px 6px; overflow: hidden; }
 .gantt-bar-text { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; line-height: 1.25; width: 100%; word-break: keep-all; overflow-wrap: break-word; }
 .loadout-tag { display: block; font-size: 10px; color: #fbbf24; margin-top: 4px; font-weight: 500; }
 
@@ -41,7 +41,7 @@ h2 { font-size: 16px; color: #fbbf24; margin: 24px 0 12px; }
   h1 { font-size: 20px; }
   .meta { font-size: 13px; }
   .gantt-scroll-hint { display: block; }
-  .gantt-grid { grid-template-columns: 80px repeat(5, 76px); min-width: 460px; }
+  .gantt-grid { grid-template-columns: 80px repeat(5, 76px); width: max-content; min-width: 460px; }
   .gantt-cell { padding: 8px 6px; font-size: 11px; }
   .gantt-member { font-size: 11px; }
   .gantt-bar { font-size: 9px; padding: 3px 4px; }
@@ -75,8 +75,7 @@ h2 { font-size: 16px; color: #fbbf24; margin: 24px 0 12px; }
         <div class="gantt-cell gantt-timeline-cell"><div class="gantt-bar" style="background:#10b981;left:calc(60% + 4px);width:calc(20% - 8px)" title="爆 B site"><span class="gantt-bar-text">彈牆燒b site</span></div><div class="gantt-bar" style="background:#10b981;left:calc(20% + 4px);width:calc(20% - 8px)" title=" drop smoke b lobby"><span class="gantt-bar-text"> drop smoke b lobby</span></div></div><div class="gantt-cell gantt-member">第三身位<span class="loadout-tag">煙 閃×2</span></div>
         <div class="gantt-cell gantt-timeline-cell"><div class="gantt-bar" style="background:#f59e0b;left:calc(0% + 4px);width:calc(20% - 8px)" title="煙跳台黑屋"><span class="gantt-bar-text">煙跳台黑屋</span></div><div class="gantt-bar" style="background:#f59e0b;left:calc(60% + 4px);width:calc(20% - 8px)" title="B門左邊 3點黑點中間果粒 , w + jump throw"><span class="gantt-bar-text">B門左邊 柱後閃</span></div></div><div class="gantt-cell gantt-member">第四身位<span class="loadout-tag">煙 閃×2</span></div>
         <div class="gantt-cell gantt-timeline-cell"><div class="gantt-bar" style="background:#ef4444;left:calc(0% + 4px);width:calc(20% - 8px)" title="比煙第5身位"><span class="gantt-bar-text">比煙第5身位</span></div><div class="gantt-bar" style="background:#ef4444;left:calc(60% + 4px);width:calc(20% - 8px)" title="B門右邊Blong閃 瞄ramp中 ，w jump throw /底線閃 , 要叫行到ramp箱前面 w jump throw, 要叫"><span class="gantt-bar-text">B門右邊Blong閃/底線閃</span></div></div><div class="gantt-cell gantt-member">第五身位<span class="loadout-tag">煙 閃×2</span></div>
-        <div class="gantt-cell gantt-timeline-cell"><div class="gantt-bar" style="background:#8b5cf6;left:calc(0% + 4px);width:calc(20% - 8px)" title="mid快煙+執地下smoke"><span class="gantt-bar-text">mid快煙+執地下smoke</span></div><div class="gantt-bar" style="background:#8b5cf6;left:calc(20% + 4px);width:calc(20% - 8px)" title="跑到過左tunnel之後煙b site 黑屋"><span class="gantt-bar-text">煙b site 黑屋</span></div><div class="gantt-bar" style="background:#8b5cf6;left:calc(40% + 4px);width:calc(20% - 8px)" title=" lobby 箱上閃, 瞄b字 jump throw 
-ramp 閃 瞄右邊樹頂"><span class="gantt-bar-text">call,  lobby 箱上柱後閃, ramp閃</span></div><div class="gantt-bar" style="background:#8b5cf6;left:calc(60% + 4px);width:calc(20% - 8px)" title="底線煙, 瞄門頂附近 shift jump throw"><span class="gantt-bar-text">底線ct煙</span></div></div>
+        <div class="gantt-cell gantt-timeline-cell"><div class="gantt-bar" style="background:#8b5cf6;left:calc(0% + 4px);width:calc(20% - 8px)" title="mid快煙+執地下smoke"><span class="gantt-bar-text">mid快煙+執地下smoke</span></div><div class="gantt-bar" style="background:#8b5cf6;left:calc(20% + 4px);width:calc(20% - 8px)" title="跑到過左tunnel之後煙b site 黑屋"><span class="gantt-bar-text">煙b site 黑屋</span></div><div class="gantt-bar" style="background:#8b5cf6;left:calc(40% + 4px);width:calc(20% - 8px)" title=" lobby 箱上閃, 瞄b字 jump throw  ramp 閃 瞄右邊樹頂"><span class="gantt-bar-text">call,  lobby 箱上柱後閃, ramp閃</span></div><div class="gantt-bar" style="background:#8b5cf6;left:calc(60% + 4px);width:calc(20% - 8px)" title="底線煙, 瞄門頂附近 shift jump throw"><span class="gantt-bar-text">底線ct煙</span></div></div>
       </div>
     </div>
 
@@ -147,8 +146,7 @@ ramp 閃 瞄右邊樹頂"><span class="gantt-bar-text">call,  lobby 箱上柱後
       </tr>
 <tr>
         <td>call,  lobby 箱上柱後閃, ramp閃</td>
-        <td> lobby 箱上閃, 瞄b字 jump throw 
-ramp 閃 瞄右邊樹頂</td>
+        <td> lobby 箱上閃, 瞄b字 jump throw  ramp 閃 瞄右邊樹頂</td>
         <td><span class="badge" style="background:#8b5cf6">第五身位</span></td>
         <td>第 3 格</td>
       </tr>
