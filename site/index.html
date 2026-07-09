@@ -60,14 +60,14 @@ h2 { font-size: 16px; color: #fbbf24; margin: 24px 0 12px; }
   <div class="page-hero">
     <h1>CS2 戰術手冊</h1>
     <p class="team-desc">红笑俊 梁余深 李蝌羊 林业俊 聞助框</p>
-    <p class="meta">更新時間：2026/7/9 上午11:45:13 · 共 5 個戰術 · 4 張地圖</p>
+    <p class="meta">更新時間：2026/7/9 下午6:52:18 · 共 6 個戰術 · 4 張地圖</p>
   </div>
 
   <div class="nav">
     <div class="nav-label">地圖</div>
     <div class="map-tabs" id="mapTabs"><button type="button" class="map-tab active" data-map="Ancient">Ancient</button><button type="button" class="map-tab" data-map="Dust II">Dust II</button><button type="button" class="map-tab" data-map="Inferno">Inferno</button><button type="button" class="map-tab" data-map="Mirage">Mirage</button></div>
     <div class="nav-label">戰術</div>
-    <div class="tactic-tabs" id="tacticTabs"><button type="button" class="tactic-tab active" data-map="Ancient" data-tactic-id="1783507965899-j5ml0">B rush</button><button type="button" class="tactic-tab hidden" data-map="Dust II" data-tactic-id="1783509314270-xu047">Testing</button><button type="button" class="tactic-tab hidden" data-map="Inferno" data-tactic-id="1783509315386-mxflu">戰術 3</button><button type="button" class="tactic-tab hidden" data-map="Mirage" data-tactic-id="1783509316371-bjyjj">戰術 4</button><button type="button" class="tactic-tab" data-map="Ancient" data-tactic-id="1783565602236-r2gbu">Mid Rush</button></div>
+    <div class="tactic-tabs" id="tacticTabs"><button type="button" class="tactic-tab active" data-map="Ancient" data-tactic-id="1783507965899-j5ml0">B rush</button><button type="button" class="tactic-tab hidden" data-map="Dust II" data-tactic-id="1783509314270-xu047">Testing</button><button type="button" class="tactic-tab hidden" data-map="Inferno" data-tactic-id="1783509315386-mxflu">戰術 3</button><button type="button" class="tactic-tab hidden" data-map="Mirage" data-tactic-id="1783509316371-bjyjj">戰術 4</button><button type="button" class="tactic-tab" data-map="Ancient" data-tactic-id="1783565602236-r2gbu">Mid Rush</button><button type="button" class="tactic-tab" data-map="Ancient" data-tactic-id="1783594262861-7al8f">A excute</button></div>
   </div>
 
   <div id="panels"><section class="tactic-panel active" data-map="Ancient" data-tactic-id="1783507965899-j5ml0">
@@ -335,10 +335,36 @@ h2 { font-size: 16px; color: #fbbf24; margin: 24px 0 12px; }
         <td>第 3 格</td>
       </tr></tbody>
     </table>
+  </section>
+<section class="tactic-panel" data-map="Ancient" data-tactic-id="1783594262861-7al8f">
+    <h2 class="tactic-title">Ancient · A excute</h2>
+
+    <h2>時間軸</h2>
+    <p class="gantt-scroll-hint">← 左右滑動查看完整時間軸 →</p>
+    <div class="gantt-scroll">
+      <div class="gantt-grid">
+        <div class="gantt-cell gantt-header">隊友</div>
+        <div class="gantt-cell gantt-header">第 1 格</div><div class="gantt-cell gantt-header">第 2 格</div><div class="gantt-cell gantt-header">第 3 格</div><div class="gantt-cell gantt-header">第 4 格</div><div class="gantt-cell gantt-header">第 5 格</div>
+        <div class="gantt-cell gantt-member">第一身位<span class="loadout-tag">閃×2</span></div>
+        <div class="gantt-cell gantt-timeline-cell"></div><div class="gantt-cell gantt-member">第二身位<span class="loadout-tag">雷</span></div>
+        <div class="gantt-cell gantt-timeline-cell"></div><div class="gantt-cell gantt-member">第三身位<span class="loadout-tag">閃</span></div>
+        <div class="gantt-cell gantt-timeline-cell"></div><div class="gantt-cell gantt-member">第四身位<span class="loadout-tag">煙 閃</span></div>
+        <div class="gantt-cell gantt-timeline-cell"></div><div class="gantt-cell gantt-member">第五身位<span class="loadout-tag">火</span></div>
+        <div class="gantt-cell gantt-timeline-cell"></div>
+      </div>
+    </div>
+
+    <h2>戰術動作明細</h2>
+    <table>
+      <thead>
+        <tr><th>動作</th><th>描述</th><th>隊友</th><th>時間格</th></tr>
+      </thead>
+      <tbody><tr><td colspan="4">—</td></tr></tbody>
+    </table>
   </section></div>
 
   <script>
-    const tactics = [{"id":"1783507965899-j5ml0","map":"Ancient","name":"B rush"},{"id":"1783509314270-xu047","map":"Dust II","name":"Testing"},{"id":"1783509315386-mxflu","map":"Inferno","name":"戰術 3"},{"id":"1783509316371-bjyjj","map":"Mirage","name":"戰術 4"},{"id":"1783565602236-r2gbu","map":"Ancient","name":"Mid Rush"}];
+    const tactics = [{"id":"1783507965899-j5ml0","map":"Ancient","name":"B rush"},{"id":"1783509314270-xu047","map":"Dust II","name":"Testing"},{"id":"1783509315386-mxflu","map":"Inferno","name":"戰術 3"},{"id":"1783509316371-bjyjj","map":"Mirage","name":"戰術 4"},{"id":"1783565602236-r2gbu","map":"Ancient","name":"Mid Rush"},{"id":"1783594262861-7al8f","map":"Ancient","name":"A excute"}];
     let activeMap = "Ancient";
 
     function selectMap(map) {
