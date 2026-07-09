@@ -34,8 +34,9 @@ export async function exportAsPdf(element: HTMLElement, filename: string): Promi
   pdf.save(`${filename}.pdf`)
 }
 
-export function exportAsHtml(tactics: Tactic[]): void {
+export async function exportAsHtml(tactics: Tactic[]): Promise<void> {
   const title = 'CS2 戰術手冊'
+  const catDataUri = await getCatDataUri()
   const maps = [...new Set(tactics.map((t) => t.map))]
 
   const mapTabs = maps
@@ -74,9 +75,12 @@ export function exportAsHtml(tactics: Tactic[]): void {
   </style>
 </head>
 <body>
-  <h1>${escapeHtml(title)}</h1>
-  <p class="team-desc">${escapeHtml(exportMeta.teamDescription)}</p>
-  <p class="meta">匯出時間：${new Date().toLocaleString('zh-Hant')} · 共 ${tactics.length} 個戰術 · ${maps.length} 張地圖</p>
+  ${catDataUri ? `<img class="cat-mascot" src="${catDataUri}" alt="貓咪" />` : ''}
+  <div class="page-hero">
+    <h1>${escapeHtml(title)}</h1>
+    <p class="team-desc">${escapeHtml(exportMeta.teamDescription)}</p>
+    <p class="meta">匯出時間：${new Date().toLocaleString('zh-Hant')} · 共 ${tactics.length} 個戰術 · ${maps.length} 張地圖</p>
+  </div>
 
   <div class="nav">
     <div class="nav-label">地圖</div>
@@ -239,4 +243,19 @@ function escapeAttr(s: string): string {
 
 function sanitizeFilename(s: string): string {
   return s.replace(/[^\w\u4e00-\u9fff-]+/g, '_') || 'cs2-tactic'
+}
+
+async function getCatDataUri(): Promise<string> {
+  try {
+    const res = await fetch('/cat.png')
+    if (!res.ok) return ''
+    const blob = await res.blob()
+    return await new Promise((resolve) => {
+      const reader = new FileReader()
+      reader.onload = () => resolve(reader.result as string)
+      reader.readAsDataURL(blob)
+    })
+  } catch {
+    return ''
+  }
 }

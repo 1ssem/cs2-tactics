@@ -1,6 +1,7 @@
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { getHtmlExportStyles } from './html-styles.mjs'
+import { getCatDataUri } from './cat-image.mjs'
 
 const root = resolve(import.meta.dirname, '..')
 const source = resolve(root, 'tactics.json')
@@ -111,6 +112,7 @@ export function generateHtmlFromTactics(tactics, options = {}) {
   const title = options.title ?? 'CS2 戰術手冊'
   const publishedAt = options.publishedAt
   const teamDescription = options.teamDescription ?? ''
+  const catDataUri = options.catDataUri ?? ''
   const maps = [...new Set(tactics.map((t) => t.map))]
 
   const mapTabs = maps
@@ -153,9 +155,12 @@ export function generateHtmlFromTactics(tactics, options = {}) {
   </style>
 </head>
 <body>
-  <h1>${escapeHtml(title)}</h1>
-  ${teamDescription ? `<p class="team-desc">${escapeHtml(teamDescription)}</p>` : ''}
-  <p class="meta">${metaLine}</p>
+  ${catDataUri ? `<img class="cat-mascot" src="${catDataUri}" alt="貓咪" />` : ''}
+  <div class="page-hero">
+    <h1>${escapeHtml(title)}</h1>
+    ${teamDescription ? `<p class="team-desc">${escapeHtml(teamDescription)}</p>` : ''}
+    <p class="meta">${metaLine}</p>
+  </div>
 
   <div class="nav">
     <div class="nav-label">地圖</div>
@@ -231,6 +236,7 @@ function main() {
   const html = generateHtmlFromTactics(tactics, {
     publishedAt: raw.publishedAt,
     teamDescription: raw.teamDescription || exportMeta.teamDescription || '',
+    catDataUri: getCatDataUri(),
   })
   mkdirSync(outDir, { recursive: true })
   writeFileSync(outFile, html, 'utf8')
